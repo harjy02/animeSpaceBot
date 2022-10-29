@@ -13,13 +13,13 @@ import { ButtonRow } from "lib/discordComponents/button";
 import { catchNewError } from "lib/errors/errorHandling";
 import { Listener } from "@sapphire/framework";
 import { getAuthData } from "cluster/anilist/libs/authData";
-import { dmGuild } from "assets/reference";
 import { unAuthenticated } from "lib/templates/unAuthenticated";
 import { airingUpdateEpisodeStatus } from "lib/commands/airing/airingUpdateEpisodeStatus";
 import { FuzzyDateInput, Status } from "typings/anilist/media";
 import { setComponent } from "lib/discordComponents/component";
 import { airingGetEpisodeData } from "lib/commands/airing/airingGetEpisodeData";
 import moment from "moment";
+import { findOrCreateDiscordGuild } from "cluster/anilist/libs/discordGuild";
 
 export default class extends Listener {
    public async run(interaction: ButtonInteraction, arr: ButtonTuple) {
@@ -33,7 +33,9 @@ export default class extends Listener {
          const progress = obj.progress;
          const status = obj.status;
          const guild =
-            interaction.channel?.type === "DM" ? await dmGuild : interaction.guild;
+            interaction.channel?.type === "DM"
+               ? await findOrCreateDiscordGuild({ id: "0", name: "DM" })
+               : interaction.guild;
 
          //#endregion
 

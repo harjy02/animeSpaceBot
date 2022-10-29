@@ -13,12 +13,11 @@ import { mangaOverview } from "lib/commands/media/mediaSearch/media/mangaMedia/m
 import { parseJson } from "lib/tools/text/parseJson";
 import { setComponent } from "lib/discordComponents/component";
 import { textTruncate } from "lib/tools/text/textTruncate";
-import { dmGuild } from "assets/reference";
+import { findOrCreateDiscordGuild } from "cluster/anilist/libs/discordGuild";
 
 @ApplyOptions<SlashCommandOptions>({
    info: {
-      description:
-         "This command allows you to search general info about any manga",
+      description: "This command allows you to search general info about any manga",
       usage: "To use this command run `/manga` by using as argument the title of the manga you want to search",
       structure: "/manga <name of the manga>",
       example: "`/manga one piece` or `/manga kekkai sensen` etc..",
@@ -38,7 +37,9 @@ export default class extends BotSlashCommand {
       //#region [args]
 
       const guild =
-         interaction.channel?.type === "DM" ? await dmGuild : interaction.guild;
+         interaction.channel?.type === "DM"
+            ? await findOrCreateDiscordGuild({ id: "0", name: "DM" })
+            : interaction.guild;
 
       //#endregion
 

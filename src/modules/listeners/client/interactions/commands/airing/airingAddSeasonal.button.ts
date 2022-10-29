@@ -4,7 +4,7 @@ import { catchNewError } from "lib/errors/errorHandling";
 import { Listener } from "@sapphire/framework";
 import { findOrCreateDiscordChannel } from "cluster/anilist/libs/discordChannel";
 import { findOrCreateDiscordGuild } from "cluster/anilist/libs/discordGuild";
-import { dmGuild } from "assets/reference";
+
 import { addAiringAnime } from "modules/slash-commands/3)other commands/airing";
 import { textTruncate } from "lib/tools/text/textTruncate";
 
@@ -36,7 +36,11 @@ export default class extends Listener {
 
          const discordChannel =
             channel.type === "DM"
-               ? await findOrCreateDiscordChannel(channel.id, "DM", await dmGuild)
+               ? await findOrCreateDiscordChannel(
+                    channel.id,
+                    "DM",
+                    await findOrCreateDiscordGuild({ id: "0", name: "DM" }),
+                 )
                : await findOrCreateDiscordChannel(
                     channel.id,
                     channel.name,

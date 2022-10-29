@@ -10,17 +10,18 @@ import {
 } from "discord.js";
 import { getMediaIndex } from "lib/commands/media/mediaIndex/mediaIndex";
 import { textTruncate } from "lib/tools/text/textTruncate";
-import { dmGuild } from "assets/reference";
 import { disableComponent, setComponent } from "lib/discordComponents/component";
 import { parseJson } from "lib/tools/text/parseJson";
 import { arrowRight, arrowLeft, list, block } from "assets/emoji";
 import { AnimeOpeningCollection } from "lib/commands/media/Themes/animeOpeningCollection";
 import { ButtonRow } from "lib/discordComponents/button";
 import { catchNewError } from "lib/errors/errorHandling";
+import { findOrCreateDiscordGuild } from "cluster/anilist/libs/discordGuild";
 
 @ApplyOptions<SlashCommandOptions>({
    info: {
-      description: "This command allows you to search an anime and view all it's openings",
+      description:
+         "This command allows you to search an anime and view all it's openings",
       usage: "To use this command run `/opening` by using as argument the title of the anime you want to search",
       structure: "/opening <anime title>",
       example: "`/opening one piece` or `/opening kekkai sensen` etc..",
@@ -40,7 +41,9 @@ export default class extends BotSlashCommand {
       //#region [args]
 
       const guild =
-         interaction.channel?.type === "DM" ? await dmGuild : interaction.guild;
+         interaction.channel?.type === "DM"
+            ? await findOrCreateDiscordGuild({ id: "0", name: "DM" })
+            : interaction.guild;
 
       //#endregion
 

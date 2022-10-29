@@ -8,12 +8,13 @@ import { RandomMedia } from "lib/commands/randomMedia/randomMedia";
 import type { SlashCommandOptions } from "lib/slashCommands/framework/lib/structures/SlashCommand";
 import { addPlanningButton } from "modules/listeners/client/interactions/modules/addPlanning/addPlanningButtonListener";
 import { textJoin } from "lib/tools/text/textJoin";
-import { dmGuild } from "assets/reference";
 import { catchNewError } from "lib/errors/errorHandling";
+import { findOrCreateDiscordGuild } from "cluster/anilist/libs/discordGuild";
 
 @ApplyOptions<SlashCommandOptions>({
    info: {
-      description: "This command allows you to randomly search new anime to watch or manga to read",
+      description:
+         "This command allows you to randomly search new anime to watch or manga to read",
       usage: "To use this command just run `/randommedia` without any argument and then use the buttons to roll the search",
    },
 })
@@ -21,7 +22,10 @@ export default class extends BotSlashCommand {
    public async run(interaction: CommandInteraction): Promise<void> {
       //#region [args]
 
-      const guild = interaction.channel?.type === "DM" ? await dmGuild : interaction.guild;
+      const guild =
+         interaction.channel?.type === "DM"
+            ? await findOrCreateDiscordGuild({ id: "0", name: "DM" })
+            : interaction.guild;
       const authorId = interaction.user.id;
 
       //#endregion

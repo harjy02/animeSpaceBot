@@ -13,7 +13,7 @@ import { parseJson } from "lib/tools/text/parseJson";
 import { textTruncate } from "lib/tools/text/textTruncate";
 import { unConnected } from "lib/templates/unConnected";
 import { getUserData } from "cluster/anilist/libs/userData";
-import { dmGuild } from "assets/reference";
+import { findOrCreateDiscordGuild } from "cluster/anilist/libs/discordGuild";
 
 @ApplyOptions<SlashCommandOptions>({
    info: {
@@ -46,7 +46,10 @@ export default class extends BotSlashCommand {
    public async run(interaction: CommandInteraction): Promise<void> {
       //#region [args]
 
-      const guild = interaction.channel?.type === "DM" ? await dmGuild : interaction.guild;
+      const guild =
+         interaction.channel?.type === "DM"
+            ? await findOrCreateDiscordGuild({ id: "0", name: "DM" })
+            : interaction.guild;
 
       //#endregion
 

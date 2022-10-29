@@ -11,7 +11,6 @@ import { anilist_credential } from "assets/config";
 import { findOrCreateDiscordUser } from "cluster/anilist/libs/discordUser";
 import fetch from "node-fetch";
 import { findOrCreateDiscordGuild } from "cluster/anilist/libs/discordGuild";
-import { dmGuild } from "assets/reference";
 import { setAuthData } from "cluster/anilist/libs/authData";
 import { getWsUserInfo } from "webServer/lib/wsUserInfo";
 import { setUserData } from "cluster/anilist/libs/userData";
@@ -28,7 +27,9 @@ export default class extends Listener {
          const authorUsername = interaction.user.username;
 
          const guild =
-            interaction.channel?.type === "DM" ? await dmGuild : interaction.guild;
+            interaction.channel?.type === "DM"
+               ? await findOrCreateDiscordGuild({ id: "0", name: "DM" })
+               : interaction.guild;
 
          // #endregion
 

@@ -6,8 +6,10 @@ import { supportServerInviteLink } from "assets/config";
 import { getAuthData, removeAuthData } from "cluster/anilist/libs/authData";
 import { getUserData, removeUserData } from "cluster/anilist/libs/userData";
 import { getDiscordUser } from "cluster/anilist/libs/discordUser";
-import { dmGuild } from "assets/reference";
-import { getDiscordGuild } from "cluster/anilist/libs/discordGuild";
+import {
+   findOrCreateDiscordGuild,
+   getDiscordGuild,
+} from "cluster/anilist/libs/discordGuild";
 
 @ApplyOptions<SlashCommandOptions>({
    info: {
@@ -23,7 +25,9 @@ export default class extends BotSlashCommand {
 
       const author = interaction.user;
       const guild =
-         interaction.channel?.type === "DM" ? await dmGuild : interaction.guild;
+         interaction.channel?.type === "DM"
+            ? await findOrCreateDiscordGuild({ id: "0", name: "DM" })
+            : interaction.guild;
 
       //#endregion
 

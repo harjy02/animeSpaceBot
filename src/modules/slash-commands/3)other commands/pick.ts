@@ -8,8 +8,8 @@ import { Pick } from "lib/commands/pick/pick";
 import type { SlashCommandOptions } from "lib/slashCommands/framework/lib/structures/SlashCommand";
 import { unConnected } from "lib/templates/unConnected";
 import { getUserData } from "cluster/anilist/libs/userData";
-import { dmGuild } from "assets/reference";
 import { catchNewError } from "lib/errors/errorHandling";
+import { findOrCreateDiscordGuild } from "cluster/anilist/libs/discordGuild";
 
 @ApplyOptions<SlashCommandOptions>({
    info: {
@@ -26,7 +26,10 @@ export default class extends BotSlashCommand {
       //#region [args]
 
       const authorId = interaction.user.id;
-      const guild = interaction.channel?.type === "DM" ? await dmGuild : interaction.guild;
+      const guild =
+         interaction.channel?.type === "DM"
+            ? await findOrCreateDiscordGuild({ id: "0", name: "DM" })
+            : interaction.guild;
 
       //#endregion
 

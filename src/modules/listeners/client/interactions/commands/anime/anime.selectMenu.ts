@@ -7,14 +7,17 @@ import { addPlanningInteraction } from "lib/commands/media/mediaFunctions/addPla
 import { animeDescription } from "lib/commands/media/mediaSearch/media/animeMedia/animeDescription";
 import { animeOverview } from "lib/commands/media/mediaSearch/media/animeMedia/animeOverview";
 import { setComponent } from "lib/discordComponents/component";
-import { dmGuild } from "assets/reference";
+import { findOrCreateDiscordGuild } from "cluster/anilist/libs/discordGuild";
 
 export default class extends Listener {
    public async run(interaction: SelectMenuInteraction, arr: AnimeMenuTuple) {
       try {
          //#region [args]
 
-         const guild = interaction.channel?.type === "DM" ? await dmGuild : interaction.guild;
+         const guild =
+            interaction.channel?.type === "DM"
+               ? await findOrCreateDiscordGuild({ id: "0", name: "DM" })
+               : interaction.guild;
          const authorId = arr[1];
          const idAl = arr[2];
          const idMal = arr[3];

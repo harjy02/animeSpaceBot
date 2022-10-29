@@ -12,11 +12,11 @@ import { BotSlashCommand } from "lib/class/botSlashCommand";
 import type { SlashCommandOptions } from "lib/slashCommands/framework/lib/structures/SlashCommand";
 import pkceChallenge from "pkce-challenge";
 import { textJoin } from "lib/tools/text/textJoin";
-import { dmGuild } from "assets/reference";
 import { loginModal } from "modules/listeners/client/interactions/commands/loginDev/login.modal";
 import { ButtonRow } from "lib/discordComponents/button";
 import { setComponent } from "lib/discordComponents/component";
 import { loginButton } from "modules/listeners/client/interactions/commands/loginDev/login.button";
+import { findOrCreateDiscordGuild } from "cluster/anilist/libs/discordGuild";
 
 @ApplyOptions<SlashCommandOptions>({
    info: {
@@ -32,7 +32,9 @@ export default class extends BotSlashCommand {
 
       const author = interaction.user;
       const guild =
-         interaction.channel?.type === "DM" ? await dmGuild : interaction.guild;
+         interaction.channel?.type === "DM"
+            ? await findOrCreateDiscordGuild({ id: "0", name: "DM" })
+            : interaction.guild;
 
       //#endregion
 

@@ -11,7 +11,7 @@ import { ApplyOptions } from "@sapphire/decorators";
 import { BotSlashCommand } from "lib/class/botSlashCommand";
 import { ButtonRow } from "lib/discordComponents/button";
 import type { SlashCommandOptions } from "lib/slashCommands/framework/lib/structures/SlashCommand";
-import { anilistUrl, dmGuild } from "assets/reference";
+import { anilistUrl } from "assets/reference";
 import { getAlUserInfo } from "lib/commands/connect/connect";
 import { getUserIndex } from "lib/commands/media/mediaIndex/userIndex";
 import { parseJson } from "lib/tools/text/parseJson";
@@ -49,7 +49,10 @@ export default class extends BotSlashCommand {
       if (responseObj) {
          //#region [args]
 
-         const guild = interaction.channel?.type === "DM" ? await dmGuild : interaction.guild;
+         const guild =
+            interaction.channel?.type === "DM"
+               ? await findOrCreateDiscordGuild({ id: "0", name: "DM" })
+               : interaction.guild;
          const author = interaction.user;
          const id = responseObj[0];
 

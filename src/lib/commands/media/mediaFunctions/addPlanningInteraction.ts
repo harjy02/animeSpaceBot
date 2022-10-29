@@ -15,7 +15,7 @@ import { getAuthData } from "cluster/anilist/libs/authData";
 import { decrypt } from "lib/crypto/decrypt";
 import { loginKey } from "assets/config";
 import type AuthData from "cluster/anilist/models/authData";
-import { dmGuild } from "assets/reference";
+import { findOrCreateDiscordGuild } from "cluster/anilist/libs/discordGuild";
 
 export async function addPlanningInteraction(
    interaction: MessageComponentInteraction,
@@ -24,7 +24,10 @@ export async function addPlanningInteraction(
    try {
       //#region [args]
 
-      const guild = interaction.channel?.type === "DM" ? await dmGuild : interaction.guild;
+      const guild =
+         interaction.channel?.type === "DM"
+            ? await findOrCreateDiscordGuild({ id: "0", name: "DM" })
+            : interaction.guild;
 
       //#endregion
 

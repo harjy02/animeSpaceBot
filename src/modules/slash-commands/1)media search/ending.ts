@@ -10,13 +10,13 @@ import {
 } from "discord.js";
 import { getMediaIndex } from "lib/commands/media/mediaIndex/mediaIndex";
 import { textTruncate } from "lib/tools/text/textTruncate";
-import { dmGuild } from "assets/reference";
 import { disableComponent, setComponent } from "lib/discordComponents/component";
 import { parseJson } from "lib/tools/text/parseJson";
 import { arrowRight, arrowLeft, list, block } from "assets/emoji";
 import { AnimeEndingCollection } from "lib/commands/media/Themes/animeEndingCollection";
 import { ButtonRow } from "lib/discordComponents/button";
 import { catchNewError } from "lib/errors/errorHandling";
+import { findOrCreateDiscordGuild } from "cluster/anilist/libs/discordGuild";
 
 @ApplyOptions<SlashCommandOptions>({
    info: {
@@ -40,7 +40,9 @@ export default class extends BotSlashCommand {
       //#region [args]
 
       const guild =
-         interaction.channel?.type === "DM" ? await dmGuild : interaction.guild;
+         interaction.channel?.type === "DM"
+            ? await findOrCreateDiscordGuild({ id: "0", name: "DM" })
+            : interaction.guild;
 
       //#endregion
 

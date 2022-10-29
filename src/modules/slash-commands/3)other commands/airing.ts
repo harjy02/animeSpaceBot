@@ -27,7 +27,6 @@ import {
    channelHasAnime,
    findOrCreateDiscordChannel,
 } from "cluster/anilist/libs/discordChannel";
-import { dmGuild } from "assets/reference";
 
 import type Anime from "cluster/anilist/models/anime";
 import DiscordGuild from "cluster/anilist/models/discordGuild";
@@ -257,7 +256,11 @@ export default class Airing extends BotSlashCommand {
 
       const discordChannel =
          channel.type === "DM"
-            ? await findOrCreateDiscordChannel(channel.id, "DM", await dmGuild)
+            ? await findOrCreateDiscordChannel(
+                 channel.id,
+                 "DM",
+                 await findOrCreateDiscordGuild({ id: "0", name: "DM" }),
+              )
             : await findOrCreateDiscordChannel(
                  channel.id,
                  channel.name,
@@ -507,7 +510,11 @@ export default class Airing extends BotSlashCommand {
 
       const discordChannel =
          channel.type === "DM"
-            ? await findOrCreateDiscordChannel(channel.id, "DM", await dmGuild)
+            ? await findOrCreateDiscordChannel(
+                 channel.id,
+                 "DM",
+                 await findOrCreateDiscordGuild({ id: "0", name: "DM" }),
+              )
             : await findOrCreateDiscordChannel(
                  channel.id,
                  channel.name,
@@ -557,7 +564,11 @@ export default class Airing extends BotSlashCommand {
 
       const discordChannel =
          channel.type === "DM"
-            ? await findOrCreateDiscordChannel(channel.id, "DM", await dmGuild)
+            ? await findOrCreateDiscordChannel(
+                 channel.id,
+                 "DM",
+                 await findOrCreateDiscordGuild({ id: "0", name: "DM" }),
+              )
             : await findOrCreateDiscordChannel(
                  channel.id,
                  channel.name,
