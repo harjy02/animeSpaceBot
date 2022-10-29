@@ -1,0 +1,21 @@
+{
+   "extends": "@sapphire/ts-config",
+   "compilerOptions": {
+      "rootDir": "src",
+      "baseUrl": "./src",
+      "outDir": "dist",
+      "tsBuildInfoFile": "dist/.tsbuildinfo",
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+      "sourceMap": true,
+      "declarationMap": false,
+      "declaration": false,
+      "skipLibCheck": true,
+      "noUnusedLocals": false,
+      "noUnusedParameters": false,
+      "importsNotUsedAsValues": "preserve"
+   },
+   "include": [
+      "src"
+   ],
+}
