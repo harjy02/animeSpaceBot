@@ -166,7 +166,7 @@ export default class extends Listener {
 
          const scoreButton = new MessageButton()
             .setCustomId("score")
-            .setLabel(mediaListEntry.score ? "Edit score" : "Add score")
+            .setLabel(mediaListEntry?.score ? "Edit score" : "Add score")
             .setStyle("PRIMARY");
 
          const buttonRow = new ButtonRow([confirmButton, exitButton, scoreButton]);

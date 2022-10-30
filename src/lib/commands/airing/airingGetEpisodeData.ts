@@ -51,7 +51,7 @@ export interface AiringEpisodeDataQuery {
             color: string;
          };
          siteUrl: string;
-         mediaListEntry: {
+         mediaListEntry?: {
             score: number;
             status: Status;
             progress: number;
