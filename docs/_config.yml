@@ -17,7 +17,7 @@ title: Anime Space bot
 description: A discord bot to search anime/manga/character and more...
 # baseurl: "/just-the-docs" # the subpath of your site, e.g. /blog
 # url: "https://pmarsceill.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-baseurl: "/AnimeSpaceWeb"
+baseurl: "/AnimeSpaceBot"
 url: "https://killerkyros.github.io"
 
 permalink: pretty
