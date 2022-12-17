@@ -8,7 +8,7 @@
 
 <p>Command list:</p>
 
-<p><img src="/AnimeSpaceWeb/assets/images/help3.png" alt="help command" /></p>
+<p><img src="/AnimeSpaceBot/assets/images/help3.png" alt="help command" /></p>
 
 <p>The bot has a list of slash commands, the main one that the bot features are:</p>
 
@@ -17,11 +17,11 @@
   <li><strong>manga</strong> - to search manga/webtoons/novels…</li>
 </ul>
 
-<p><img src="/AnimeSpaceWeb/assets/images/animanga.png" alt="anime + manga commands" /></p>
+<p><img src="/AnimeSpaceBot/assets/images/animanga.png" alt="anime + manga commands" /></p>
 
 <p>The bot also enables to connect an anilist profile to the bot and view a little embed profile of it:</p>
 
-<p><img src="/AnimeSpaceWeb/assets/images/profileconnect.png" alt="profile + connect commands" /></p>
+<p><img src="/AnimeSpaceBot/assets/images/profileconnect.png" alt="profile + connect commands" /></p>
 
 <p>Other media search commands are:</p>
 
@@ -31,7 +31,7 @@
   <li><strong>studio</strong> - search info about any studio member in anime industry</li>
 </ul>
 
-<p><img src="/AnimeSpaceWeb/assets/images/characterstaffstudio.png" alt="enter image description here" /></p>
+<p><img src="/AnimeSpaceBot/assets/images/characterstaffstudio.png" alt="enter image description here" /></p>
 
 <p>Command to explore new media:</p>
 
@@ -41,5 +41,5 @@
   <li><strong>seasonal</strong> - list of current season media</li>
 </ul>
 
-<p><img src="/AnimeSpaceWeb/assets/images/trendingseasonalrandommedia.png" alt="enter image description here" /></p>
+<p><img src="/AnimeSpaceBot/assets/images/trendingseasonalrandommedia.png" alt="enter image description here" /></p>
 :ET
