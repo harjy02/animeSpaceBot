@@ -1,0 +1,146 @@
+//
+// Buttons and things that look like buttons
+//
+// stylelint-disable color-named
+
+.btn {
+  display: inline-block;
+  box-sizing: border-box;
+  padding-top: 0.3em;
+  padding-right: 1em;
+  padding-bottom: 0.3em;
+  padding-left: 1em;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 500;
+  line-height: 1.5;
+  color: $link-color;
+  text-decoration: none;
+  vertical-align: baseline;
+  cursor: pointer;
+  background-color: $base-button-color;
+  border-width: 0;
+  border-radius: $border-radius;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(0, 0, 0, 0.08);
+  appearance: none;
+
+  &:focus {
+    text-decoration: none;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(blue, 0.25);
+  }
+
+  &:focus:hover,
+  &.selected:focus {
+    box-shadow: 0 0 0 3px rgba(blue, 0.25);
+  }
+
+  &:hover,
+  &.zeroclipboard-is-hover {
+    color: darken($link-color, 2%);
+  }
+
+  &:hover,
+  &:active,
+  &.zeroclipboard-is-hover,
+  &.zeroclipboard-is-active {
+    text-decoration: none;
+    background-color: darken($base-button-color, 1%);
+  }
+
+  &:active,
+  &.selected,
+  &.zeroclipboard-is-active {
+    background-color: darken($base-button-color, 3%);
+    background-image: none;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
+  }
+
+  &.selected:hover {
+    background-color: darken(#dcdcdc, 5%);
+  }
+
+  &:disabled,
+  &.disabled {
+    &,
+    &:hover {
+      color: rgba(102, 102, 102, 0.5);
+      cursor: default;
+      background-color: rgba(229, 229, 229, 0.5);
+      background-image: none;
+      box-shadow: none;
+    }
+  }
+}
+
+@include btn-color("primary", $white, $btn-primary-color);
+
+@include btn-color("purple", $white, $purple-100);
+
+@include btn-color("blue", $white, $blue-000);
+
+@include btn-color("green", $white, $green-100);
+
+.btn-outline-custom001 {
+  $color1: #ff3366;
+  $color2: $base-button-color;
+
+  color: $color1;
+  background: transparent;
+  box-shadow: inset 0 0 0 2px $color1;
+
+  &:hover,
+  &:active,
+  &.zeroclipboard-is-hover,
+  &.zeroclipboard-is-active {
+    color: $color2;
+    text-decoration: none;
+    background-color: darken($color1, 4%);
+    box-shadow: inset 0 0 0 2px $color1;
+  }
+
+  &:focus {
+    text-decoration: none;
+    outline: none;
+    box-shadow: inset 0 0 0 2px $color1, 0 0 0 3px rgba($color1, 0.25);
+  }
+
+  &:focus:hover,
+  &.selected:focus {
+    box-shadow: inset 0 0 0 3px $color1;
+  }
+}
+
+.btn-color-custom001 {
+  $A1: #ffdb01;
+  $B1: $base-button-color;
+  
+
+  color: $B1;
+  background-color: darken($A1, 2%);
+  background-image: linear-gradient(lighten($A1, 5%), darken($A1, 2%));
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 0 4px 10px rgba(0, 0, 0, 0.12);
+
+  &:hover,
+  &:active,
+  &.zeroclipboard-is-hover,
+  &.zeroclipboard-is-active {
+    color: $A1;
+    text-decoration: none;
+    background: transparent;
+    background-color: transparent;
+    box-shadow: inset 0 0 0 2px $A1;
+  }
+
+  &:focus {
+    text-decoration: none;
+    outline: none;
+    box-shadow: inset 0 0 0 2px $A1, 0 0 0 3px rgba($A1, 0.25);
+  }
+
+  &:focus:hover,
+  &.selected:focus {
+    box-shadow: inset 0 0 0 3px $A1;
+  }
+}

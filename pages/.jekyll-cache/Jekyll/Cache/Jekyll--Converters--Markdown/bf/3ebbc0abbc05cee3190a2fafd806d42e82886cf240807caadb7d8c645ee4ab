@@ -1,0 +1,45 @@
+I"<h1 class="fs-9" id="anime-space-bot">Anime Space bot</h1>
+
+<p class="fs-6 fw-300">A bot that aims to make anime/manga search on discord easy with command to search any media you have in your mind and share them with your friends</p>
+
+<p><a href="https://discord.com/api/oauth2/authorize?client_id=855904155902279681&amp;permissions=0&amp;scope=bot%20applications.commands" class="btn btn-color-custom001 fs-5 mb-4 mb-md-0 mr-2">Invite the bot</a> <a href="https://top.gg/bot/855904155902279681" class="btn btn-outline-custom001 fs-5 mb-4 mb-md-0">View on top.gg</a></p>
+
+<hr />
+
+<p>Command list:</p>
+
+<p><img src="/AnimeSpaceWeb/assets/images/help.png" alt="help command" /></p>
+
+<p>The bot has a list of slash commands, the main one that the bot features are:</p>
+
+<ul>
+  <li><strong>anime</strong> - to search anime</li>
+  <li><strong>manga</strong> - to search manga/webtoons/novels…</li>
+</ul>
+
+<p><img src="/AnimeSpaceWeb/assets/images/animanga.png" alt="anime + manga commands" /></p>
+
+<p>The bot also enables to connect an anilist profile to the bot and view a little embed profile of it:</p>
+
+<p><img src="/AnimeSpaceWeb/assets/images/profileconnect.png" alt="profile + connect commands" /></p>
+
+<p>Other media search commands are:</p>
+
+<ul>
+  <li><strong>character</strong> - search info about characters from anime/manga</li>
+  <li><strong>staff</strong> - search generic info for any staff creators in the anime industry</li>
+  <li><strong>studio</strong> - search info about any studio member in anime industry</li>
+</ul>
+
+<p><img src="/AnimeSpaceWeb/assets/images/characterstaffstudio.png" alt="enter image description here" /></p>
+
+<p>Command to explore new media:</p>
+
+<ul>
+  <li><strong>randommedia</strong> - randomly iterate anime/manga to explore new stuff</li>
+  <li><strong>trending</strong> - list of current trending commands</li>
+  <li><strong>seasonal</strong> - list of current season media</li>
+</ul>
+
+<p><img src="/AnimeSpaceWeb/assets/images/trendingseasonalrandommedia.png" alt="enter image description here" /></p>
+:ET
